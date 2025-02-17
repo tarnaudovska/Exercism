@@ -39,13 +39,13 @@ def reactor_efficiency(voltage, current, theoretical_max_power):
     efficiency_percent = (generated_power/theoretical_max_power)*100
 
     if efficiency_percent>=80:
-        return "green"
-    elif efficiency_percent>=60:
-        return "orange"
-    elif efficiency_percent>=30:
-        return "red"
-    else:
-        return "black"
+        return 'green'
+    if efficiency_percent>=60:
+        return 'orange'
+    if efficiency_percent>=30:
+        return 'red'
+    if efficiency_percent<30:
+        return 'black'
 
 
 
@@ -65,9 +65,7 @@ def fail_safe(temperature, neutrons_produced_per_second, threshold):
     
     if reactor < (0.9*threshold):
         return  'LOW'
-    elif reactor >= (0.9*threshold) and reactor <= (1.1*threshold):
+    if reactor >= (0.9*threshold) and reactor <= (1.1*threshold):
         return  'NORMAL'
-    elif reactor > (1.1*threshold):
+    if reactor > (1.1*threshold):
         return  'DANGER'
-
-   
